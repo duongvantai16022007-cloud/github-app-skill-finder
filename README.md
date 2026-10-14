@@ -32,19 +32,30 @@ Supports both **Terminal CLI Mode** (`python app.py`) and **Interactive Web UI M
 
 ## 📂 Project Structure
 
-- `app.py`: Dual-mode entrypoint supporting both **Terminal CLI** (`python app.py`) and **Streamlit Web UI** (`streamlit run app.py`), with English/Vietnamese language toggle.
-- `ai_engine.py`: Multi-provider AI engine (`GitHubAIAdvisor`) and zero-key structural analyzer (`SmartZeroKeyEngine`).
-- `github_client.py`: GitHub Search API client (`GitHubClient`) with automatic query relaxation and multi-threaded `README.md` / `SKILL.md` fetching.
-- `models.py`: Pydantic data models (`SearchPlan`, `RepoCandidate`, `RepoEvaluation`, `BatchEvaluationResult`).
-- `requirements.txt`: Python dependencies.
-- `.env.example`: Environment variable template for optional API keys.
+```text
+github-app-skill-finder/
+├── app.py             # Dual-mode entrypoint: Terminal CLI & Streamlit Web UI
+├── ai_engine.py       # Multi-provider AI engine & SmartZeroKeyEngine analyzer
+├── github_client.py   # GitHub Search API client & parallel README/SKILL.md fetcher
+├── models.py          # Pydantic schemas (SearchPlan, RepoCandidate, RepoEvaluation)
+├── requirements.txt   # Python dependencies
+└── .env.example       # Optional environment variable template
+```
 
 ---
 
 ## 🛠️ Installation
 
-```powershell
-pip install -r e:\pythonai\vibe\requirements.txt
+```bash
+git clone https://github.com/duongvantai16022007-cloud/github-app-skill-finder.git
+cd github-app-skill-finder
+pip install -r requirements.txt
+```
+
+*(Optional)* Copy `.env.example` to `.env` if you want to pre-configure API keys for GLM, OpenRouter, Groq, Gemini, or a GitHub Personal Access Token:
+
+```bash
+cp .env.example .env
 ```
 
 ---
@@ -54,24 +65,24 @@ pip install -r e:\pythonai\vibe\requirements.txt
 ### Option A: Run Directly in Terminal (CLI Mode)
 
 1. **Interactive Terminal Menu:**
-   ```powershell
-   python e:\pythonai\vibe\app.py
+   ```bash
+   python app.py
    ```
 2. **One-Line Command (Find Open-Source Apps):**
-   ```powershell
-   python e:\pythonai\vibe\app.py "Find a cross-platform expense tracker app built with Flutter"
+   ```bash
+   python app.py "Find a cross-platform expense tracker app built with Flutter"
    ```
 3. **One-Line Command (Find AI Agent Skills / `SKILL.md` / MCP):**
-   ```powershell
-   python e:\pythonai\vibe\app.py --mode skill "Playwright browser automation and UI testing skill"
+   ```bash
+   python app.py --mode skill "Playwright browser automation and UI testing skill"
    ```
 4. **CLI Flags:**
-   ```powershell
-   python e:\pythonai\vibe\app.py --mode skill --provider glm_bigmodel --model glm-4-flash --stars 20 --limit 8 --output results.json "Security audit skill for Claude Code"
+   ```bash
+   python app.py --mode skill --provider glm_bigmodel --model glm-4-flash --stars 20 --limit 8 --output results.json "Security audit skill for Claude Code"
    ```
 
 ### Option B: Run Interactive Web UI (Streamlit Mode)
 
-```powershell
-streamlit run e:\pythonai\vibe\app.py
+```bash
+streamlit run app.py
 ```
