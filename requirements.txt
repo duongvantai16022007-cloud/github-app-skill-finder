@@ -1,0 +1,5 @@
+google-genai>=2.25.0
+streamlit>=1.38.0
+requests>=2.32.0
+pydantic>=2.9.0
+python-dotenv>=1.0.1
